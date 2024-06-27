@@ -13,7 +13,7 @@
         android:background="@android:color/holo_purple"
         android:gravity="center"
         android:padding="20dp"
-        android:text="Solve the puzzle!"
+        android:text="Assign the events to the years!"
         android:textSize="24sp" />
 
     <GridLayout
@@ -29,8 +29,8 @@
             android:id="@+id/dragItem1"
             android:layout_width="0dp"
             android:layout_height="120dp"
-            android:layout_margin="4dp"
             android:layout_columnWeight="1"
+            android:layout_margin="4dp"
             android:background="@android:color/holo_green_light"
             android:gravity="center"
             android:padding="20dp"
@@ -41,8 +41,8 @@
             android:id="@+id/dragItem2"
             android:layout_width="0dp"
             android:layout_height="120dp"
-            android:layout_margin="4dp"
             android:layout_columnWeight="1"
+            android:layout_margin="4dp"
             android:background="@android:color/holo_green_light"
             android:gravity="center"
             android:padding="20dp"
@@ -53,8 +53,8 @@
             android:id="@+id/dragItem3"
             android:layout_width="0dp"
             android:layout_height="120dp"
-            android:layout_margin="4dp"
             android:layout_columnWeight="1"
+            android:layout_margin="4dp"
             android:background="@android:color/holo_green_light"
             android:gravity="center"
             android:padding="20dp"
@@ -65,8 +65,8 @@
             android:id="@+id/dragItem4"
             android:layout_width="0dp"
             android:layout_height="120dp"
-            android:layout_margin="4dp"
             android:layout_columnWeight="1"
+            android:layout_margin="4dp"
             android:background="@android:color/holo_green_light"
             android:gravity="center"
             android:padding="20dp"
@@ -89,8 +89,8 @@
             android:id="@+id/dropArea1"
             android:layout_width="0dp"
             android:layout_height="120dp"
-            android:layout_margin="4dp"
             android:layout_columnWeight="1"
+            android:layout_margin="4dp"
             android:background="@android:color/holo_blue_light"
             android:gravity="center"
             android:padding="16dp"
@@ -101,8 +101,8 @@
             android:id="@+id/dropArea2"
             android:layout_width="0dp"
             android:layout_height="120dp"
-            android:layout_margin="4dp"
             android:layout_columnWeight="1"
+            android:layout_margin="4dp"
             android:background="@android:color/holo_blue_light"
             android:gravity="center"
             android:padding="16dp"
@@ -113,8 +113,8 @@
             android:id="@+id/dropArea3"
             android:layout_width="0dp"
             android:layout_height="120dp"
-            android:layout_margin="4dp"
             android:layout_columnWeight="1"
+            android:layout_margin="4dp"
             android:background="@android:color/holo_blue_light"
             android:gravity="center"
             android:padding="16dp"
@@ -125,8 +125,8 @@
             android:id="@+id/dropArea4"
             android:layout_width="0dp"
             android:layout_height="120dp"
-            android:layout_margin="4dp"
             android:layout_columnWeight="1"
+            android:layout_margin="4dp"
             android:background="@android:color/holo_blue_light"
             android:gravity="center"
             android:padding="16dp"
@@ -135,13 +135,31 @@
 
     </GridLayout>
 
-    <Button
-        android:id="@+id/showButton"
-        android:text="Show answers"
-        android:textSize="24sp"
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_width="300dp"
-        android:layout_height="60dp">
+        android:orientation="vertical">
 
-    </Button>
+        <Button
+            android:id="@+id/showButton"
+            android:layout_width="300dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:text="Show answers"
+            android:textSize="24sp">
+
+        </Button>
+
+        <Button
+            android:id="@+id/resetButton"
+            android:layout_width="300dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:text="Reset answers"
+            android:textSize="24sp">
+
+        </Button>
+    </LinearLayout>
+
 </LinearLayout>
