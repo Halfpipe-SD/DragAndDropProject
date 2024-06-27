@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/infoText"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="@android:color/holo_purple"
+        android:gravity="center"
+        android:padding="20dp"
+        android:text="Solve the puzzle!"
+        android:textSize="24sp" />
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="256dp"
+        android:layout_margin="10dp"
+        android:background="@android:color/holo_red_light"
+        android:columnCount="2"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/dragItem1"
+            android:layout_width="0dp"
+            android:layout_height="120dp"
+            android:layout_margin="4dp"
+            android:layout_columnWeight="1"
+            android:background="@android:color/holo_green_light"
+            android:gravity="center"
+            android:padding="20dp"
+            android:text="Drag me 1"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/dragItem2"
+            android:layout_width="0dp"
+            android:layout_height="120dp"
+            android:layout_margin="4dp"
+            android:layout_columnWeight="1"
+            android:background="@android:color/holo_green_light"
+            android:gravity="center"
+            android:padding="20dp"
+            android:text="Drag me 2"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/dragItem3"
+            android:layout_width="0dp"
+            android:layout_height="120dp"
+            android:layout_margin="4dp"
+            android:layout_columnWeight="1"
+            android:background="@android:color/holo_green_light"
+            android:gravity="center"
+            android:padding="20dp"
+            android:text="Drag me 3"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/dragItem4"
+            android:layout_width="0dp"
+            android:layout_height="120dp"
+            android:layout_margin="4dp"
+            android:layout_columnWeight="1"
+            android:background="@android:color/holo_green_light"
+            android:gravity="center"
+            android:padding="20dp"
+            android:text="Drag me 4"
+            android:textSize="24sp" />
+
+    </GridLayout>
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="256dp"
+        android:layout_margin="10dp"
+        android:background="@android:color/holo_orange_light"
+        android:columnCount="2"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+
+
+        <TextView
+            android:id="@+id/dropArea1"
+            android:layout_width="0dp"
+            android:layout_height="120dp"
+            android:layout_margin="4dp"
+            android:layout_columnWeight="1"
+            android:background="@android:color/holo_blue_light"
+            android:gravity="center"
+            android:padding="16dp"
+            android:text="Drop here 1"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/dropArea2"
+            android:layout_width="0dp"
+            android:layout_height="120dp"
+            android:layout_margin="4dp"
+            android:layout_columnWeight="1"
+            android:background="@android:color/holo_blue_light"
+            android:gravity="center"
+            android:padding="16dp"
+            android:text="Drop here 2"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/dropArea3"
+            android:layout_width="0dp"
+            android:layout_height="120dp"
+            android:layout_margin="4dp"
+            android:layout_columnWeight="1"
+            android:background="@android:color/holo_blue_light"
+            android:gravity="center"
+            android:padding="16dp"
+            android:text="Drop here 3"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/dropArea4"
+            android:layout_width="0dp"
+            android:layout_height="120dp"
+            android:layout_margin="4dp"
+            android:layout_columnWeight="1"
+            android:background="@android:color/holo_blue_light"
+            android:gravity="center"
+            android:padding="16dp"
+            android:text="Drop here 4"
+            android:textSize="24sp" />
+
+    </GridLayout>
+
+    <Button
+        android:id="@+id/showButton"
+        android:text="Show answers"
+        android:textSize="24sp"
+        android:layout_gravity="center"
+        android:layout_width="300dp"
+        android:layout_height="60dp">
+
+    </Button>
+</LinearLayout>
