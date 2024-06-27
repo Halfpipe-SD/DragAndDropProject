@@ -32,6 +32,10 @@ public class MainActivity extends AppCompatActivity {
         dragItems.add((TextView) findViewById(R.id.dragItem2));
         dragItems.add((TextView) findViewById(R.id.dragItem3));
         dragItems.add((TextView) findViewById(R.id.dragItem4));
+        dragItems.add((TextView) findViewById(R.id.dragItem5));
+        dragItems.add((TextView) findViewById(R.id.dragItem6));
+        dragItems.add((TextView) findViewById(R.id.dragItem7));
+        dragItems.add((TextView) findViewById(R.id.dragItem8));
 
         // Initialize your drop areas and store original texts
         TextView dropArea1 = (TextView) findViewById(R.id.dropArea1);
@@ -49,6 +53,22 @@ public class MainActivity extends AppCompatActivity {
         TextView dropArea4 = (TextView) findViewById(R.id.dropArea4);
         dropAreas.add(dropArea4);
         originalDropAreaTexts.add(dropArea4.getText().toString());
+
+        TextView dropArea5 = (TextView) findViewById(R.id.dropArea5);
+        dropAreas.add(dropArea5);
+        originalDropAreaTexts.add(dropArea5.getText().toString());
+
+        TextView dropArea6 = (TextView) findViewById(R.id.dropArea6);
+        dropAreas.add(dropArea6);
+        originalDropAreaTexts.add(dropArea6.getText().toString());
+
+        TextView dropArea7 = (TextView) findViewById(R.id.dropArea7);
+        dropAreas.add(dropArea7);
+        originalDropAreaTexts.add(dropArea7.getText().toString());
+
+        TextView dropArea8 = (TextView) findViewById(R.id.dropArea8);
+        dropAreas.add(dropArea8);
+        originalDropAreaTexts.add(dropArea8.getText().toString());
 
         // Initialize isAnswered array based on the number of drop areas
         isAnswered = new boolean[dropAreas.size()];
@@ -98,7 +118,13 @@ public class MainActivity extends AppCompatActivity {
                         case DragEvent.ACTION_DROP:
                             view.setBackgroundColor(ContextCompat.getColor(view.getContext(), R.color.holo_blue_dark));
 
-                            dropAreas.get(index).setText(draggedView.getText());
+                            String dropAreaText = dropAreas.get(index).getText().toString();
+                            String dragItemText = draggedView.getText().toString();
+
+                            // Concatenate dropAreaText and dragItemText with a line break
+                            String combinedText = dropAreaText + ":\n" + dragItemText;
+
+                            dropAreas.get(index).setText(combinedText);
 
                             isAnswered[index] = true;
                             isAnsweredCorrectly[index] = draggedView.getId() == dragItems.get(index).getId();
@@ -148,6 +174,7 @@ public class MainActivity extends AppCompatActivity {
                     dropArea.setText(originalDropAreaTexts.get(i));  // Reset text to original
                     isAnswered[i] = false;
                     isAnsweredCorrectly[i] = false;
+                    showAnswerButton.setEnabled(false);
                 }
             }
         });

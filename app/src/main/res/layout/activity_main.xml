@@ -16,129 +16,237 @@
         android:text="Assign the events to the years!"
         android:textSize="24sp" />
 
-    <GridLayout
+    <HorizontalScrollView
         android:layout_width="match_parent"
-        android:layout_height="256dp"
+        android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:background="@android:color/holo_red_light"
-        android:columnCount="2"
-        android:gravity="center_horizontal"
-        android:orientation="horizontal">
+        android:scrollbars="none">
 
-        <TextView
-            android:id="@+id/dragItem1"
-            android:layout_width="0dp"
-            android:layout_height="120dp"
-            android:layout_columnWeight="1"
-            android:layout_margin="4dp"
-            android:background="@android:color/holo_green_light"
-            android:gravity="center"
-            android:padding="20dp"
-            android:text="Drag me 1"
-            android:textSize="24sp" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/dragItem2"
-            android:layout_width="0dp"
-            android:layout_height="120dp"
-            android:layout_columnWeight="1"
-            android:layout_margin="4dp"
-            android:background="@android:color/holo_green_light"
-            android:gravity="center"
-            android:padding="20dp"
-            android:text="Drag me 2"
-            android:textSize="24sp" />
+            <!-- First Row of Drag Items -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/dragItem3"
-            android:layout_width="0dp"
-            android:layout_height="120dp"
-            android:layout_columnWeight="1"
-            android:layout_margin="4dp"
-            android:background="@android:color/holo_green_light"
-            android:gravity="center"
-            android:padding="20dp"
-            android:text="Drag me 3"
-            android:textSize="24sp" />
+                <TextView
+                    android:id="@+id/dragItem1"
+                    android:layout_width="150dp"
+                    android:layout_height="120dp"
+                    android:layout_margin="4dp"
+                    android:background="@android:color/holo_green_light"
+                    android:gravity="center"
+                    android:padding="20dp"
+                    android:text="Drag me 1"
+                    android:textSize="24sp" />
 
-        <TextView
-            android:id="@+id/dragItem4"
-            android:layout_width="0dp"
-            android:layout_height="120dp"
-            android:layout_columnWeight="1"
-            android:layout_margin="4dp"
-            android:background="@android:color/holo_green_light"
-            android:gravity="center"
-            android:padding="20dp"
-            android:text="Drag me 4"
-            android:textSize="24sp" />
+                <TextView
+                    android:id="@+id/dragItem2"
+                    android:layout_width="150dp"
+                    android:layout_height="120dp"
+                    android:layout_margin="4dp"
+                    android:background="@android:color/holo_green_light"
+                    android:gravity="center"
+                    android:padding="20dp"
+                    android:text="Drag me 2"
+                    android:textSize="24sp" />
 
-    </GridLayout>
+                <TextView
+                    android:id="@+id/dragItem3"
+                    android:layout_width="150dp"
+                    android:layout_height="120dp"
+                    android:layout_margin="4dp"
+                    android:background="@android:color/holo_green_light"
+                    android:gravity="center"
+                    android:padding="20dp"
+                    android:text="Drag me 3"
+                    android:textSize="24sp" />
 
-    <GridLayout
+                <TextView
+                    android:id="@+id/dragItem4"
+                    android:layout_width="150dp"
+                    android:layout_height="120dp"
+                    android:layout_margin="4dp"
+                    android:background="@android:color/holo_green_light"
+                    android:gravity="center"
+                    android:padding="20dp"
+                    android:text="Drag me 4"
+                    android:textSize="24sp" />
+
+            </LinearLayout>
+
+            <!-- Second Row of Drag Items -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/dragItem5"
+                    android:layout_width="150dp"
+                    android:layout_height="120dp"
+                    android:layout_margin="4dp"
+                    android:background="@android:color/holo_green_light"
+                    android:gravity="center"
+                    android:padding="20dp"
+                    android:text="Drag me 5"
+                    android:textSize="24sp" />
+
+                <TextView
+                    android:id="@+id/dragItem6"
+                    android:layout_width="150dp"
+                    android:layout_height="120dp"
+                    android:layout_margin="4dp"
+                    android:background="@android:color/holo_green_light"
+                    android:gravity="center"
+                    android:padding="20dp"
+                    android:text="Drag me 6"
+                    android:textSize="24sp" />
+
+                <TextView
+                    android:id="@+id/dragItem7"
+                    android:layout_width="150dp"
+                    android:layout_height="120dp"
+                    android:layout_margin="4dp"
+                    android:background="@android:color/holo_green_light"
+                    android:gravity="center"
+                    android:padding="20dp"
+                    android:text="Drag me 7"
+                    android:textSize="24sp" />
+
+                <TextView
+                    android:id="@+id/dragItem8"
+                    android:layout_width="150dp"
+                    android:layout_height="120dp"
+                    android:layout_margin="4dp"
+                    android:background="@android:color/holo_green_light"
+                    android:gravity="center"
+                    android:padding="20dp"
+                    android:text="Drag me 8"
+                    android:textSize="24sp" />
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <HorizontalScrollView
         android:layout_width="match_parent"
-        android:layout_height="256dp"
-        android:layout_margin="10dp"
+        android:layout_height="300dp"
+        android:layout_margin="4dp"
         android:background="@android:color/holo_orange_light"
-        android:columnCount="2"
-        android:gravity="center_horizontal"
-        android:orientation="horizontal">
+        android:scrollbars="none">
 
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/dropArea1"
-            android:layout_width="0dp"
-            android:layout_height="120dp"
-            android:layout_columnWeight="1"
-            android:layout_margin="4dp"
-            android:background="@android:color/holo_blue_light"
-            android:gravity="center"
-            android:padding="16dp"
-            android:text="Drop here 1"
-            android:textSize="24sp" />
+            <TextView
+                android:id="@+id/dropArea1"
+                android:layout_width="150dp"
+                android:layout_height="120dp"
+                android:layout_margin="4dp"
+                android:background="@android:color/holo_blue_light"
+                android:gravity="center"
+                android:padding="16dp"
+                android:text="753 v. Chr."
+                android:textSize="24sp" />
 
-        <TextView
-            android:id="@+id/dropArea2"
-            android:layout_width="0dp"
-            android:layout_height="120dp"
-            android:layout_columnWeight="1"
-            android:layout_margin="4dp"
-            android:background="@android:color/holo_blue_light"
-            android:gravity="center"
-            android:padding="16dp"
-            android:text="Drop here 2"
-            android:textSize="24sp" />
+            <TextView
+                android:id="@+id/dropArea2"
+                android:layout_width="150dp"
+                android:layout_height="120dp"
+                android:layout_margin="4dp"
+                android:background="@android:color/holo_blue_light"
+                android:gravity="center"
+                android:padding="16dp"
+                android:text="1492"
+                android:textSize="24sp" />
 
-        <TextView
-            android:id="@+id/dropArea3"
-            android:layout_width="0dp"
-            android:layout_height="120dp"
-            android:layout_columnWeight="1"
-            android:layout_margin="4dp"
-            android:background="@android:color/holo_blue_light"
-            android:gravity="center"
-            android:padding="16dp"
-            android:text="Drop here 3"
-            android:textSize="24sp" />
+            <TextView
+                android:id="@+id/dropArea3"
+                android:layout_width="150dp"
+                android:layout_height="120dp"
+                android:layout_margin="4dp"
+                android:background="@android:color/holo_blue_light"
+                android:gravity="center"
+                android:padding="16dp"
+                android:text="1517"
+                android:textSize="24sp" />
 
-        <TextView
-            android:id="@+id/dropArea4"
-            android:layout_width="0dp"
-            android:layout_height="120dp"
-            android:layout_columnWeight="1"
-            android:layout_margin="4dp"
-            android:background="@android:color/holo_blue_light"
-            android:gravity="center"
-            android:padding="16dp"
-            android:text="Drop here 4"
-            android:textSize="24sp" />
+            <TextView
+                android:id="@+id/dropArea4"
+                android:layout_width="150dp"
+                android:layout_height="120dp"
+                android:layout_margin="4dp"
+                android:background="@android:color/holo_blue_light"
+                android:gravity="center"
+                android:padding="16dp"
+                android:text="1776"
+                android:textSize="24sp" />
 
-    </GridLayout>
+            <TextView
+                android:id="@+id/dropArea5"
+                android:layout_width="150dp"
+                android:layout_height="120dp"
+                android:layout_margin="4dp"
+                android:background="@android:color/holo_blue_light"
+                android:gravity="center"
+                android:padding="16dp"
+                android:text="1789"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/dropArea6"
+                android:layout_width="150dp"
+                android:layout_height="120dp"
+                android:layout_margin="4dp"
+                android:background="@android:color/holo_blue_light"
+                android:gravity="center"
+                android:padding="16dp"
+                android:text="1945"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/dropArea7"
+                android:layout_width="150dp"
+                android:layout_height="120dp"
+                android:layout_margin="4dp"
+                android:background="@android:color/holo_blue_light"
+                android:gravity="center"
+                android:padding="16dp"
+                android:text="1969"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/dropArea8"
+                android:layout_width="150dp"
+                android:layout_height="120dp"
+                android:layout_margin="4dp"
+                android:background="@android:color/holo_blue_light"
+                android:gravity="center"
+                android:padding="16dp"
+                android:text="1989"
+                android:textSize="24sp" />
+
+            <!-- Add more TextViews as needed -->
+
+        </LinearLayout>
+    </HorizontalScrollView>
+
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginTop="40dp"
         android:orientation="vertical">
 
         <Button
@@ -146,6 +254,7 @@
             android:layout_width="300dp"
             android:layout_height="60dp"
             android:layout_gravity="center"
+            android:layout_marginBottom="20dp"
             android:text="Show answers"
             android:textSize="24sp">
 
