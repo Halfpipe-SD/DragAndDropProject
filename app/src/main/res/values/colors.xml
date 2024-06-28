@@ -6,7 +6,7 @@
     <color name="holo_green_light">#ff99cc00</color>
     <color name="holo_blue_light">#ff33b5e5</color>
     <color name="holo_blue_dark">#ff0099cc</color>
-    <color name="red">#ff0000</color>
-    <color name="green">#008000</color>
+    <color name="correct">#17c964</color>
+    <color name="wrong">#f51720 </color>
     <color name="green_assigned">#808080</color>
 </resources>

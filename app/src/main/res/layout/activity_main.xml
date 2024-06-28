@@ -20,7 +20,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="4dp"
-        android:background="@android:color/holo_red_light"
         android:scrollbars="none">
 
         <LinearLayout
@@ -42,7 +41,6 @@
                     android:background="@android:color/holo_green_light"
                     android:gravity="center"
                     android:padding="8dp"
-                    android:text="Drag me 1"
                     android:textSize="18sp" />
 
                 <TextView
@@ -53,7 +51,6 @@
                     android:background="@android:color/holo_green_light"
                     android:gravity="center"
                     android:padding="8dp"
-                    android:text="Drag me 2"
                     android:textSize="18sp" />
 
                 <TextView
@@ -64,7 +61,6 @@
                     android:background="@android:color/holo_green_light"
                     android:gravity="center"
                     android:padding="8dp"
-                    android:text="Drag me 3"
                     android:textSize="18sp" />
 
                 <TextView
@@ -75,7 +71,6 @@
                     android:background="@android:color/holo_green_light"
                     android:gravity="center"
                     android:padding="8dp"
-                    android:text="Drag me 4"
                     android:textSize="18sp" />
 
             </LinearLayout>
@@ -94,7 +89,6 @@
                     android:background="@android:color/holo_green_light"
                     android:gravity="center"
                     android:padding="8dp"
-                    android:text="Drag me 5"
                     android:textSize="18sp" />
 
                 <TextView
@@ -105,7 +99,6 @@
                     android:background="@android:color/holo_green_light"
                     android:gravity="center"
                     android:padding="8dp"
-                    android:text="Drag me 6"
                     android:textSize="18sp" />
 
                 <TextView
@@ -116,7 +109,6 @@
                     android:background="@android:color/holo_green_light"
                     android:gravity="center"
                     android:padding="8dp"
-                    android:text="Drag me 7"
                     android:textSize="18sp" />
 
                 <TextView
@@ -127,7 +119,6 @@
                     android:background="@android:color/holo_green_light"
                     android:gravity="center"
                     android:padding="8dp"
-                    android:text="Drag me 8"
                     android:textSize="18sp" />
             </LinearLayout>
 
@@ -139,7 +130,6 @@
         android:layout_width="match_parent"
         android:layout_height="256dp"
         android:layout_margin="4dp"
-        android:background="@android:color/holo_orange_light"
         android:scrollbars="none">
 
         <LinearLayout
@@ -161,7 +151,6 @@
                     android:background="@android:color/holo_blue_light"
                     android:gravity="center"
                     android:padding="8dp"
-                    android:text="753 v. Chr."
                     android:textSize="18sp" />
 
                 <TextView
@@ -172,7 +161,6 @@
                     android:background="@android:color/holo_blue_light"
                     android:gravity="center"
                     android:padding="8dp"
-                    android:text="1492"
                     android:textSize="18sp" />
 
                 <TextView
@@ -183,7 +171,6 @@
                     android:background="@android:color/holo_blue_light"
                     android:gravity="center"
                     android:padding="8dp"
-                    android:text="1517"
                     android:textSize="18sp" />
 
                 <TextView
@@ -194,7 +181,6 @@
                     android:background="@android:color/holo_blue_light"
                     android:gravity="center"
                     android:padding="8dp"
-                    android:text="1776"
                     android:textSize="18sp" />
             </LinearLayout>
 
@@ -212,7 +198,6 @@
                     android:background="@android:color/holo_blue_light"
                     android:gravity="center"
                     android:padding="8dp"
-                    android:text="1789"
                     android:textSize="18sp" />
 
                 <TextView
@@ -223,7 +208,6 @@
                     android:background="@android:color/holo_blue_light"
                     android:gravity="center"
                     android:padding="8dp"
-                    android:text="1945"
                     android:textSize="18sp" />
 
                 <TextView
@@ -234,7 +218,6 @@
                     android:background="@android:color/holo_blue_light"
                     android:gravity="center"
                     android:padding="8dp"
-                    android:text="1969"
                     android:textSize="18sp" />
 
                 <TextView
@@ -245,7 +228,6 @@
                     android:background="@android:color/holo_blue_light"
                     android:gravity="center"
                     android:padding="8dp"
-                    android:text="1989"
                     android:textSize="18sp" />
             </LinearLayout>
 
