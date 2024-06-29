@@ -18,30 +18,41 @@ public class MainActivity extends AppCompatActivity {
 
     private List<TextView> dragItems = new ArrayList<>();
     private List<TextView> dropAreas = new ArrayList<>();
+    private TextView yourScore;
     private Button showAnswerButton;
     private Button resetButton;
     private boolean[] isAnswered;
     private boolean[] isAnsweredCorrectly;
     private final String[] dragItemTexts = {
             "Founding of Rome",
-            "America is discovered",
+            "Signing of the Magna Carta",
+            "Invention of the Printing Press",
+            "Columbus discovers America",
             "Protestant Reformation",
+            "Start of the Industrial Revolution",
             "American Revolution",
             "French Revolution",
+            "The Wright Brothers' first flight",
             "End of World War II",
             "The Moon Landing",
             "Fall of the Berlin Wall"
     };
     private String[] dropAreaTexts = {
             "753 BCE",
+            "1215",
+            "1440",
             "1492",
             "1517",
+            "1760",
             "1776",
             "1789",
+            "1903",
             "1945",
             "1969",
             "1989"
     };
+
+    private final int NUM_OF_QUESTIONS = dragItemTexts.length;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +68,11 @@ public class MainActivity extends AppCompatActivity {
                 R.id.dragItem5,
                 R.id.dragItem6,
                 R.id.dragItem7,
-                R.id.dragItem8
+                R.id.dragItem8,
+                R.id.dragItem9,
+                R.id.dragItem10,
+                R.id.dragItem11,
+                R.id.dragItem12
         };
 
 
@@ -67,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
         // Shuffle the Texts so that the order of events is randomised
         Collections.shuffle(shuffledDragItemTexts);
 
-        for (int i = 0; i < dragItemIds.length; i++) {
+        for (int i = 0; i < NUM_OF_QUESTIONS; i++) {
             TextView dragItem = findViewById(dragItemIds[i]);
             dragItem.setText(shuffledDragItemTexts.get(i));
             dragItems.add(dragItem);
@@ -82,24 +97,31 @@ public class MainActivity extends AppCompatActivity {
                 R.id.dropArea5,
                 R.id.dropArea6,
                 R.id.dropArea7,
-                R.id.dropArea8
+                R.id.dropArea8,
+                R.id.dropArea9,
+                R.id.dropArea10,
+                R.id.dropArea11,
+                R.id.dropArea12
         };
 
-        for (int i = 0; i < dropAreaIds.length; i++) {
+        for (int i = 0; i < NUM_OF_QUESTIONS; i++) {
             TextView dropArea = findViewById(dropAreaIds[i]);
             dropArea.setText(dropAreaTexts[i]);
             dropAreas.add(dropArea);
         }
 
         // Initialize isAnswered array based on the number of drop areas
-        isAnswered = new boolean[dropAreas.size()];
-        isAnsweredCorrectly = new boolean[dropAreas.size()];
+        isAnswered = new boolean[NUM_OF_QUESTIONS];
+        isAnsweredCorrectly = new boolean[NUM_OF_QUESTIONS];
 
         // Set up drag item listeners for each drag item
         setUpDragItemListeners();
 
         // Set up drop area listeners for each drop area
         setUpDropAreaListeners();
+
+        yourScore = findViewById(R.id.yourScore);
+        yourScore.setVisibility(View.INVISIBLE);
 
         // Initialize showAnswerButton and set onClickListener
         showAnswerButton = findViewById(R.id.showButton);
@@ -109,16 +131,21 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Show answers (red/green colors)
-                for (int i = 0; i < dropAreas.size(); i++) {
+                int score = 0;
+                for (int i = 0; i < NUM_OF_QUESTIONS; i++) {
                     TextView dropArea = dropAreas.get(i);
                     if (isAnsweredCorrectly[i]) {
                         dropArea.setBackgroundColor(ContextCompat.getColor(MainActivity.this, R.color.correct));
+                        score++;
                     } else {
                         dropArea.setBackgroundColor(ContextCompat.getColor(MainActivity.this, R.color.wrong));
                     }
                 }
                 // Disable the button after showing answers
                 showAnswerButton.setEnabled(false);
+
+                yourScore.setText("Your score: " + score + "/" + NUM_OF_QUESTIONS);
+                yourScore.setVisibility(View.VISIBLE);
             }
         });
 
@@ -129,7 +156,7 @@ public class MainActivity extends AppCompatActivity {
         resetButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                for (int i = 0; i < dropAreas.size(); i++) {
+                for (int i = 0; i < NUM_OF_QUESTIONS; i++) {
                     TextView dropArea = dropAreas.get(i);
                     dropArea.setBackgroundColor(ContextCompat.getColor(MainActivity.this, R.color.holo_blue_light));
                     dropArea.setText(dropAreaTexts[i]);  // Reset text to original
@@ -140,6 +167,8 @@ public class MainActivity extends AppCompatActivity {
                     TextView dragItem = dragItems.get(i);
                     dragItem.setBackgroundColor(ContextCompat.getColor(MainActivity.this, R.color.holo_green_light));
                 }
+                yourScore.setVisibility(View.INVISIBLE);
+
                 // Re-Enable the OnLongClickListeners
                 setUpDragItemListeners();
                 // Re-Enable the OnDragListeners
@@ -148,32 +177,16 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    // Method to check if all answers are made
-    private void checkAllAnswered() {
-        for (boolean answered : isAnswered) {
-            if (!answered) {
-                showAnswerButton.setEnabled(true); //TODO REMOVE
-                return; // Exit if any answer is not made
-            }
-        }
-        // Enable the button if all answers are made
-        showAnswerButton.setEnabled(true);
-    }
-
     // Method to set up drag item listeners for each drag item
     private void setUpDragItemListeners() {
-        for (int i = 0; i < dragItems.size(); i++) {
+        for (int i = 0; i < NUM_OF_QUESTIONS; i++) {
             final int index = i;
             dragItems.get(i).setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View view) {
                     View.DragShadowBuilder myShadow = new View.DragShadowBuilder(dragItems.get(index));
                     // Start the drag.
-                    view.startDragAndDrop(null,  // The data to be dragged.
-                            myShadow,                 // The drag shadow builder.
-                            dragItems.get(index),     // No need to use local data.
-                            0                         // Flags. Not currently used, set to 0.
-                    );
+                    view.startDragAndDrop(null, myShadow, dragItems.get(index), 0);
 
                     return false;
                 }
@@ -183,7 +196,7 @@ public class MainActivity extends AppCompatActivity {
 
     // Method to set up drop area listeners for each drop area
     private void setUpDropAreaListeners() {
-        for (int i = 0; i < dropAreas.size(); i++) {
+        for (int i = 0; i < NUM_OF_QUESTIONS; i++) {
             final int index = i;
 
             dropAreas.get(i).setOnDragListener(new View.OnDragListener() {
@@ -193,6 +206,7 @@ public class MainActivity extends AppCompatActivity {
 
                     switch (dragEvent.getAction()) {
                         case DragEvent.ACTION_DRAG_STARTED:
+                        case DragEvent.ACTION_DRAG_ENDED:
                             return true;
                         case DragEvent.ACTION_DRAG_ENTERED:
                             if (!isAnswered[index]) {
@@ -220,13 +234,11 @@ public class MainActivity extends AppCompatActivity {
                             String combinedText = dropAreaText + ":\n" + dragItemText;
                             dropAreas.get(index).setText(combinedText);
 
-                            // Check if droppedText matches the corresponding year in dropAreaTexts array
-                            int dropAreaIndex = findDropAreaIndex(dragItemText); // Find the index of droppedText in dragItemTexts
+                            // Check if dragItemText matches the corresponding year in dropAreaTexts array
+                            int dropAreaIndex = Arrays.asList(dragItemTexts).indexOf(dragItemText); // Find the index of dragItemText in dragItemTexts
                             isAnsweredCorrectly[index] = dropAreaIndex != -1 && dropAreaText.equals(dropAreaTexts[dropAreaIndex]);
                             isAnswered[index] = true;
                             checkAllAnswered(); // Check if all answers are made
-                            return true;
-                        case DragEvent.ACTION_DRAG_ENDED:
                             return true;
                         default:
                             return false;
@@ -236,13 +248,14 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    // Helper method to find the index of droppedText in dragItemTexts
-    private int findDropAreaIndex(String droppedText) {
-        for (int i = 0; i < dragItemTexts.length; i++) {
-            if (dragItemTexts[i].equals(droppedText)) {
-                return i;
+    // Method to check if all answers are made
+    private void checkAllAnswered() {
+        for (boolean answered : isAnswered) {
+            if (!answered) {
+                return; // Exit if any answer is not made
             }
         }
-        return -1; // Not found
+        // Enable the button if all answers are made
+        showAnswerButton.setEnabled(true);
     }
 }
