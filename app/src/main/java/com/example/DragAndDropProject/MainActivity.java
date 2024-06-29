@@ -16,11 +16,10 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    private List<TextView> dragItems = new ArrayList<>();
-    private List<TextView> dropAreas = new ArrayList<>();
+    private final List<TextView> dragItems = new ArrayList<>();
+    private final List<TextView> dropAreas = new ArrayList<>();
     private TextView yourScore;
     private Button showAnswerButton;
-    private Button resetButton;
     private boolean[] isAnswered;
     private boolean[] isAnsweredCorrectly;
     private final String[] dragItemTexts = {
@@ -37,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
             "The Moon Landing",
             "Fall of the Berlin Wall"
     };
-    private String[] dropAreaTexts = {
+    private final String[] dropAreaTexts = {
             "753 BCE",
             "1215",
             "1440",
@@ -79,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
         // Create a copy of the dragItemTexts
         List<String> shuffledDragItemTexts = new ArrayList<>(Arrays.asList(dragItemTexts));
 
-        // Shuffle the Texts so that the order of events is randomised
+        // Shuffle the Texts so that the order of events is randomized
         Collections.shuffle(shuffledDragItemTexts);
 
         for (int i = 0; i < NUM_OF_QUESTIONS; i++) {
@@ -127,53 +126,47 @@ public class MainActivity extends AppCompatActivity {
         showAnswerButton = findViewById(R.id.showButton);
         // Initially disable the button until all answers are made
         showAnswerButton.setEnabled(false);
-        showAnswerButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Show answers (red/green colors)
-                int score = 0;
-                for (int i = 0; i < NUM_OF_QUESTIONS; i++) {
-                    TextView dropArea = dropAreas.get(i);
-                    if (isAnsweredCorrectly[i]) {
-                        dropArea.setBackgroundColor(ContextCompat.getColor(MainActivity.this, R.color.correct));
-                        score++;
-                    } else {
-                        dropArea.setBackgroundColor(ContextCompat.getColor(MainActivity.this, R.color.wrong));
-                    }
+        showAnswerButton.setOnClickListener(v -> {
+            // Show answers (red/green colors)
+            int score = 0;
+            for (int i = 0; i < NUM_OF_QUESTIONS; i++) {
+                TextView dropArea = dropAreas.get(i);
+                if (isAnsweredCorrectly[i]) {
+                    dropArea.setBackgroundColor(ContextCompat.getColor(MainActivity.this, R.color.correct));
+                    score++;
+                } else {
+                    dropArea.setBackgroundColor(ContextCompat.getColor(MainActivity.this, R.color.wrong));
                 }
-                // Disable the button after showing answers
-                showAnswerButton.setEnabled(false);
-
-                yourScore.setText("Your score: " + score + "/" + NUM_OF_QUESTIONS);
-                yourScore.setVisibility(View.VISIBLE);
             }
+            // Disable the button after showing answers
+            showAnswerButton.setEnabled(false);
+
+            yourScore.setText(getString(R.string.score_placeholder, score, NUM_OF_QUESTIONS));
+            yourScore.setVisibility(View.VISIBLE);
         });
 
 
         // Initialize showAnswerButton and set onClickListener
-        resetButton = findViewById(R.id.resetButton);
+        Button resetButton = findViewById(R.id.resetButton);
 
-        resetButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                for (int i = 0; i < NUM_OF_QUESTIONS; i++) {
-                    TextView dropArea = dropAreas.get(i);
-                    dropArea.setBackgroundColor(ContextCompat.getColor(MainActivity.this, R.color.holo_blue_light));
-                    dropArea.setText(dropAreaTexts[i]);  // Reset text to original
-                    isAnswered[i] = false;
-                    isAnsweredCorrectly[i] = false;
-                    showAnswerButton.setEnabled(false);
+        resetButton.setOnClickListener(v -> {
+            for (int i = 0; i < NUM_OF_QUESTIONS; i++) {
+                TextView dropArea = dropAreas.get(i);
+                dropArea.setBackgroundColor(ContextCompat.getColor(MainActivity.this, R.color.holo_blue_light));
+                dropArea.setText(dropAreaTexts[i]);  // Reset text to original
+                isAnswered[i] = false;
+                isAnsweredCorrectly[i] = false;
+                showAnswerButton.setEnabled(false);
 
-                    TextView dragItem = dragItems.get(i);
-                    dragItem.setBackgroundColor(ContextCompat.getColor(MainActivity.this, R.color.holo_green_light));
-                }
-                yourScore.setVisibility(View.INVISIBLE);
-
-                // Re-Enable the OnLongClickListeners
-                setUpDragItemListeners();
-                // Re-Enable the OnDragListeners
-                setUpDropAreaListeners();
+                TextView dragItem = dragItems.get(i);
+                dragItem.setBackgroundColor(ContextCompat.getColor(MainActivity.this, R.color.holo_green_light));
             }
+            yourScore.setVisibility(View.INVISIBLE);
+
+            // Re-Enable the OnLongClickListeners
+            setUpDragItemListeners();
+            // Re-Enable the OnDragListeners
+            setUpDropAreaListeners();
         });
     }
 
@@ -181,15 +174,12 @@ public class MainActivity extends AppCompatActivity {
     private void setUpDragItemListeners() {
         for (int i = 0; i < NUM_OF_QUESTIONS; i++) {
             final int index = i;
-            dragItems.get(i).setOnLongClickListener(new View.OnLongClickListener() {
-                @Override
-                public boolean onLongClick(View view) {
-                    View.DragShadowBuilder myShadow = new View.DragShadowBuilder(dragItems.get(index));
-                    // Start the drag.
-                    view.startDragAndDrop(null, myShadow, dragItems.get(index), 0);
+            dragItems.get(i).setOnLongClickListener(view -> {
+                View.DragShadowBuilder myShadow = new View.DragShadowBuilder(dragItems.get(index));
+                // Start the drag.
+                view.startDragAndDrop(null, myShadow, dragItems.get(index), 0);
 
-                    return false;
-                }
+                return false;
             });
         }
     }
@@ -199,50 +189,47 @@ public class MainActivity extends AppCompatActivity {
         for (int i = 0; i < NUM_OF_QUESTIONS; i++) {
             final int index = i;
 
-            dropAreas.get(i).setOnDragListener(new View.OnDragListener() {
-                @Override
-                public boolean onDrag(View view, DragEvent dragEvent) {
-                    TextView draggedView = (TextView) dragEvent.getLocalState();
+            dropAreas.get(i).setOnDragListener((view, dragEvent) -> {
+                TextView draggedView = (TextView) dragEvent.getLocalState();
 
-                    switch (dragEvent.getAction()) {
-                        case DragEvent.ACTION_DRAG_STARTED:
-                        case DragEvent.ACTION_DRAG_ENDED:
-                            return true;
-                        case DragEvent.ACTION_DRAG_ENTERED:
-                            if (!isAnswered[index]) {
-                                view.setBackgroundColor(ContextCompat.getColor(view.getContext(), R.color.holo_blue_dark));
-                            }
-                            return true;
-                        case DragEvent.ACTION_DRAG_EXITED:
-                            if (!isAnswered[index]) {
-                                view.setBackgroundColor(ContextCompat.getColor(view.getContext(), R.color.holo_blue_light));
-                            }
-                            return true;
-                        case DragEvent.ACTION_DROP:
+                switch (dragEvent.getAction()) {
+                    case DragEvent.ACTION_DRAG_STARTED:
+                    case DragEvent.ACTION_DRAG_ENDED:
+                        return true;
+                    case DragEvent.ACTION_DRAG_ENTERED:
+                        if (!isAnswered[index]) {
                             view.setBackgroundColor(ContextCompat.getColor(view.getContext(), R.color.holo_blue_dark));
-                            draggedView.setBackgroundColor(ContextCompat.getColor(view.getContext(), R.color.green_assigned));
+                        }
+                        return true;
+                    case DragEvent.ACTION_DRAG_EXITED:
+                        if (!isAnswered[index]) {
+                            view.setBackgroundColor(ContextCompat.getColor(view.getContext(), R.color.holo_blue_light));
+                        }
+                        return true;
+                    case DragEvent.ACTION_DROP:
+                        view.setBackgroundColor(ContextCompat.getColor(view.getContext(), R.color.holo_blue_dark));
+                        draggedView.setBackgroundColor(ContextCompat.getColor(view.getContext(), R.color.grey_assigned));
 
-                            // Disable OnLongClickListener of event
-                            draggedView.setOnLongClickListener(null);
-                            // Disable OnDragListener of year
-                            view.setOnDragListener(null);
+                        // Disable OnLongClickListener of event
+                        draggedView.setOnLongClickListener(null);
+                        // Disable OnDragListener of year
+                        view.setOnDragListener(null);
 
-                            String dropAreaText = dropAreas.get(index).getText().toString();
-                            String dragItemText = draggedView.getText().toString();
+                        String dropAreaText = dropAreas.get(index).getText().toString();
+                        String dragItemText = draggedView.getText().toString();
 
-                            // Concatenate dropAreaText and dragItemText with a line break
-                            String combinedText = dropAreaText + ":\n" + dragItemText;
-                            dropAreas.get(index).setText(combinedText);
+                        // Concatenate dropAreaText and dragItemText with a line break
+                        String combinedText = dropAreaText + ":\n" + dragItemText;
+                        dropAreas.get(index).setText(combinedText);
 
-                            // Check if dragItemText matches the corresponding year in dropAreaTexts array
-                            int dropAreaIndex = Arrays.asList(dragItemTexts).indexOf(dragItemText); // Find the index of dragItemText in dragItemTexts
-                            isAnsweredCorrectly[index] = dropAreaIndex != -1 && dropAreaText.equals(dropAreaTexts[dropAreaIndex]);
-                            isAnswered[index] = true;
-                            checkAllAnswered(); // Check if all answers are made
-                            return true;
-                        default:
-                            return false;
-                    }
+                        // Check if dragItemText matches the corresponding year in dropAreaTexts array
+                        int dropAreaIndex = Arrays.asList(dragItemTexts).indexOf(dragItemText); // Find the index of dragItemText in dragItemTexts
+                        isAnsweredCorrectly[index] = dropAreaIndex != -1 && dropAreaText.equals(dropAreaTexts[dropAreaIndex]);
+                        isAnswered[index] = true;
+                        checkAllAnswered(); // Check if all answers are made
+                        return true;
+                    default:
+                        return false;
                 }
             });
         }
